@@ -49,7 +49,7 @@ const inputCardLink = document.querySelector('.popup__item_type_link');
 
 const popupImage = document.querySelector('.popup_type_image');
 const popupImg = document.querySelector('.popup__img');
-const popupTitle = document.querySelector('.popup__title_type_img');
+const popupTitle = document.querySelector('.popup__title-image');
 
 function openZoom () {
     popupImage.classList.add('popup_opened');
@@ -154,10 +154,3 @@ function newCard(cardData) {
 initialCards.forEach((cardData) => {
     elementsList.append(newCard(cardData));
 });
-
-
-
-
-
-
-console.log(openZoom);
