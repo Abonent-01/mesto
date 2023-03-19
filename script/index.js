@@ -1,3 +1,4 @@
+
 /*Переменные для Profile*/
 
 const profileForm = document.querySelector('.popup_type_profile');                       //popup редактирования профиля
@@ -20,7 +21,7 @@ const cardLikeButton = document.querySelector('.elements__like');               
 const getCardTitle = document.querySelector('.elements__title');                          //строка с названием места
 const getCardLink = document.querySelector('.elements__image');                           //строка с ссылкой на изображение
 const cardEditForm = document.querySelector('.popup__form_type_card');                    //форма добавления карточки
-const buttonCardSubmit = document.querySelector('.popup__button-submit');                 //кнопка сохранения карточки
+/*const buttonCardSubmit = document.querySelector('.popup__button-submit');*/               //кнопка сохранения карточки
 
 const inputCardTitle = document.querySelector('.popup__item_type_title');                 //поле ввода названия карточки
 const inputCardLink = document.querySelector('.popup__item_type_link');                   //поле ввода ссылки на картинку
@@ -37,6 +38,8 @@ const popupTitle = document.querySelector('.popup__title-image');               
 
 const closeButtons = document.querySelectorAll('.popup__button-close');
 
+const closePopupSet = document.querySelectorAll('.popup');                                  //перемпеременная для закрытия popup окон на оверлей
+
 /*Общая функция обработки нажатия на кнопки закрытия*/
 
 closeButtons.forEach((button) => { 
@@ -49,13 +52,36 @@ closeButtons.forEach((button) => {
 
 function openPopup(popup) {
     popup.classList.add('popup_opened');
+    document.addEventListener('keydown', handleEscClosePopup);
 }
 
 /*Общая функция закрытия Popup*/
 
 function closePopup(popup) {
     popup.classList.remove('popup_opened');
+    document.removeEventListener('keydown', handleEscClosePopup);
 }
+
+
+/*Функция закрытия Popup при нажатии Esc*/
+
+const handleEscClosePopup = (evt) => {
+    if (evt.key === 'Escape') {
+        const closePopupEsc = document.querySelector('.popup_opened');
+        closePopup(closePopupEsc);
+    };
+};
+
+/*Функция закрытия Popup при нажатии на оверлей*/
+
+closePopupSet.forEach((item) => {
+    item.addEventListener('click', (evt) => {
+        if (evt.target === evt.currentTarget) {
+            const closePopupSetOverlay = addCloseSet(evt);
+            closePopup(closePopupSetOverlay);
+        };
+    });
+});
 
 
 /*Открытие Popup профиля c указанными данными*/
@@ -163,3 +189,12 @@ function createCard(cardData) {
 initialCards.forEach((cardData) => {
     elementsList.append(createCard(cardData));
 });
+
+
+
+
+/*Возврат события*/
+
+const addCloseSet = (evt) => {
+    return evt.target.closest('.popup');
+}

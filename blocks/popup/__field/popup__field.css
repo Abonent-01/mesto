@@ -3,9 +3,9 @@
     box-sizing: border-box;
     padding: 0;
     margin: 0;
-    margin-bottom: 30px;
+    /*margin-bottom: 30px;*/
 }
   
-.popup__field:last-of-type {
+/*.popup__field:last-of-type {
     margin-bottom: 0;
-}
+}*/
