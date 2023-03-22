@@ -10,6 +10,7 @@ const  formValidationConfig = {
     errorClass: 'popup__item_type_error_visible'
 }
 
+
   const enableValidation = (config) => {
     const formList = Array.from(document.querySelectorAll(config.formSelector));
   
@@ -22,7 +23,9 @@ const  formValidationConfig = {
       });
   
       addInputListners(form, config);
+      
       toggleButton(form, config);
+      
     });
  }
 
@@ -40,13 +43,17 @@ const  formValidationConfig = {
     }
 }
 
+
+
+
   const toggleButton = (form, config) => {
     const buttonSubmint = form.querySelector(config.submitButtonSelector);
     const isFormValid = form.checkValidity();
   
     buttonSubmint.disabled = !isFormValid;
-    buttonSubmint.classList.toggle('popup__button_disabled', !isFormValid);
+    buttonSubmint.classList.toggle(config.inactiveButtonClass, !isFormValid);
 }
+
 
   const addInputListners = (form, config) => {
     const inputList = Array.from(form.querySelectorAll(config.inputSelector));
@@ -57,5 +64,16 @@ const  formValidationConfig = {
       })
     });
 }
+
+const disableSubmitButton = (formValidationConfig) => {
+  const buttonSubmint = document.querySelectorAll(formValidationConfig.submitButtonSelector);
+
+  buttonSubmint.forEach((button) => {
+    button.classList.add(formValidationConfig.inactiveButtonClass);
+    button.setAttribute('disabled', '');
+  });
+}
+
+  
 
   enableValidation(formValidationConfig);

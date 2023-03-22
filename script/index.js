@@ -1,7 +1,7 @@
 
 /*Переменные для Profile*/
 
-const profileForm = document.querySelector('.popup_type_profile');                       //popup редактирования профиля
+const profilePopup = document.querySelector('.popup_type_profile');                       //popup редактирования профиля
 const profileEditButton = document.querySelector('.profile__button-edit');                //кнопка редактирования профиля
 /*const profileCloseButton = document.querySelector('.popup__button-close_type_profile');*/   //кнопка закрытия профиля
 const profileName = document.querySelector('.profile__title');                            //строка с именем
@@ -21,7 +21,7 @@ const cardLikeButton = document.querySelector('.elements__like');               
 const getCardTitle = document.querySelector('.elements__title');                          //строка с названием места
 const getCardLink = document.querySelector('.elements__image');                           //строка с ссылкой на изображение
 const cardEditForm = document.querySelector('.popup__form_type_card');                    //форма добавления карточки
-/*const buttonCardSubmit = document.querySelector('.popup__button-submit');*/               //кнопка сохранения карточки
+/*const buttonCardSubmit = document.querySelector('.popup__button-submit');*/              //кнопка сохранения карточки
 
 const inputCardTitle = document.querySelector('.popup__item_type_title');                 //поле ввода названия карточки
 const inputCardLink = document.querySelector('.popup__item_type_link');                   //поле ввода ссылки на картинку
@@ -38,7 +38,7 @@ const popupTitle = document.querySelector('.popup__title-image');               
 
 const closeButtons = document.querySelectorAll('.popup__button-close');
 
-const closePopupSet = document.querySelectorAll('.popup');                                  //перемпеременная для закрытия popup окон на оверлей
+const popupList = document.querySelectorAll('.popup');                                  //перемпеременная для закрытия popup окон на оверлей
 
 /*Общая функция обработки нажатия на кнопки закрытия*/
 
@@ -74,11 +74,10 @@ const handleEscClosePopup = (evt) => {
 
 /*Функция закрытия Popup при нажатии на оверлей*/
 
-closePopupSet.forEach((item) => {
-    item.addEventListener('click', (evt) => {
+popupList.forEach((item) => {
+    item.addEventListener('mousedown', (evt) => {
         if (evt.target === evt.currentTarget) {
-            const closePopupSetOverlay = addCloseSet(evt);
-            closePopup(closePopupSetOverlay);
+            closePopup(item);
         };
     });
 });
@@ -87,7 +86,7 @@ closePopupSet.forEach((item) => {
 /*Открытие Popup профиля c указанными данными*/
 
 profileEditButton.addEventListener('click', () => {
-    openPopup(profileForm);
+    openPopup(profilePopup);
     
     profileInputName.value = profileName.textContent;
     profileInputTitle.value = profileTitle.textContent;
@@ -101,8 +100,9 @@ profileEditForm.addEventListener('submit', (evt) => {
   
     profileName.textContent = profileInputName.value
     profileTitle.textContent = profileInputTitle.value
-  
-    closePopup(profileForm);
+
+   
+    closePopup(profilePopup);
 });
 
 
@@ -110,6 +110,7 @@ profileEditForm.addEventListener('submit', (evt) => {
 
 cardAddButton.addEventListener('click', () => {
     openPopup(popupCard);
+    
 });
 
 //Функция сохранения новой карточки
@@ -125,8 +126,9 @@ function handleCardFormSubmit (evt) {
     elementsList.prepend(createCard(card));
 
     evt.target.reset();
-
+    disableSubmitButton(formValidationConfig);
     closePopup (popupCard);
+    
 };
 
 
