@@ -21,8 +21,9 @@ const cardLikeButton = document.querySelector('.elements__like');               
 const getCardTitle = document.querySelector('.elements__title');                          //строка с названием места
 const getCardLink = document.querySelector('.elements__image');                           //строка с ссылкой на изображение
 const cardEditForm = document.querySelector('.popup__form_type_card');                    //форма добавления карточки
-/*const buttonCardSubmit = document.querySelector('.popup__button-submit');*/              //кнопка сохранения карточки
-
+const buttonCardSubmit = document.querySelector('.popup__button-submit');              //кнопка сохранения карточки
+/*const buttonCardSubmitDisabled = document.querySelector('popup__button_disabled');*/
+const buttonDisabled = document.querySelector('.popup__button-submit_type_card');
 const inputCardTitle = document.querySelector('.popup__item_type_title');                 //поле ввода названия карточки
 const inputCardLink = document.querySelector('.popup__item_type_link');                   //поле ввода ссылки на картинку
 
@@ -53,6 +54,7 @@ closeButtons.forEach((button) => {
 function openPopup(popup) {
     popup.classList.add('popup_opened');
     document.addEventListener('keydown', handleEscClosePopup);
+
 }
 
 /*Общая функция закрытия Popup*/
@@ -109,8 +111,8 @@ profileEditForm.addEventListener('submit', (evt) => {
 /*Открытие формы добавления карточки*/
 
 cardAddButton.addEventListener('click', () => {
-    openPopup(popupCard);
     
+    openPopup(popupCard);
 });
 
 //Функция сохранения новой карточки
@@ -126,10 +128,13 @@ function handleCardFormSubmit (evt) {
     elementsList.prepend(createCard(card));
 
     evt.target.reset();
-    disableSubmitButton(formValidationConfig);
+    buttonDisabled.classList.add('popup__button_disabled');
+    buttonDisabled.disabled = true;
     closePopup (popupCard);
     
 };
+
+
 
 
 cardEditForm.addEventListener('submit', handleCardFormSubmit);

@@ -47,11 +47,11 @@ const  formValidationConfig = {
 
 
   const toggleButton = (form, config) => {
-    const buttonSubmint = form.querySelector(config.submitButtonSelector);
+    const buttonSubmit = form.querySelector(config.submitButtonSelector);
     const isFormValid = form.checkValidity();
   
-    buttonSubmint.disabled = !isFormValid;
-    buttonSubmint.classList.toggle(config.inactiveButtonClass, !isFormValid);
+    buttonSubmit.disabled = !isFormValid;
+    buttonSubmit.classList.toggle(config.inactiveButtonClass, !isFormValid);
 }
 
 
@@ -65,14 +65,18 @@ const  formValidationConfig = {
     });
 }
 
-const disableSubmitButton = (formValidationConfig) => {
-  const buttonSubmint = document.querySelectorAll(formValidationConfig.submitButtonSelector);
 
-  buttonSubmint.forEach((button) => {
+
+
+/*const disableSubmitButton = (formValidationConfig) => {
+  const buttonSubmit = document.querySelectorAll(formValidationConfig.submitButtonSelector);
+
+  buttonSubmit.forEach((button) => {
     button.classList.add(formValidationConfig.inactiveButtonClass);
     button.setAttribute('disabled', '');
   });
-}
+}*/
+
 
   
 
