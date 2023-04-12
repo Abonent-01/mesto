@@ -1,3 +1,7 @@
+import { FormValidator } from "./FormValidator.js";
+import { Card } from "./Card.js";
+import { initialCards } from "./initialCards.js";
+
 
 /*Переменные для Profile*/
 
@@ -113,6 +117,8 @@ profileEditForm.addEventListener('submit', (evt) => {
 cardAddButton.addEventListener('click', () => {
     
     openPopup(popupCard);
+    buttonDisabled.classList.add('popup__button_disabled');
+    buttonDisabled.disabled = true;
 });
 
 //Функция сохранения новой карточки
@@ -157,7 +163,7 @@ const setDeleteHandler = (cardData) => {
 
 /*Функция просмотора карточки*/
 
-const setImageClickHandler = (zoomCard) => {
+/*const setImageClickHandler = (zoomCard) => {
     zoomCard.addEventListener('click', (evt) => {
         openPopup(popupImage);
 
@@ -165,13 +171,23 @@ const setImageClickHandler = (zoomCard) => {
         popupImg.alt = zoomCard.alt;
         popupTitle.textContent = evt.target.closest('.elements__item').textContent;
     });
-};
+};*/
+
+const setImageClickHandler = (zoomCard) => {
+    openPopup(popupImage);
+
+    popupImg.src = zoomCard.link;
+    popupImg.alt = zoomCard.name;
+    popupTitle.textContent = zoomCard.name;
+}
 
 
 
 /*Функция добавления карточки*/
-const elementsTemplate = document.querySelector('#elements-add').content;
+/*const elementsTemplate = document.querySelector('#elements-add').content;*/
 const elementsList = document.querySelector('.elements__list');
+
+/*
 
 function createCard(cardData) {
     const templateElements = elementsTemplate.cloneNode(true);
@@ -191,6 +207,14 @@ function createCard(cardData) {
     return templateElements;
 };
 
+*/
+
+const createCard = (cardData) => {
+    const card = new Card(cardData, '.template-card', setImageClickHandler);
+
+    return card.generateCard();
+};
+
 /*Загрузка карточек из массива*/
 
 initialCards.forEach((cardData) => {
@@ -205,3 +229,18 @@ initialCards.forEach((cardData) => {
 const addCloseSet = (evt) => {
     return evt.target.closest('.popup');
 }
+
+const  formValidationConfig = {
+    formSelector: '.popup__form',
+    inputSelector: '.popup__item',
+    submitButtonSelector: '.popup__button-submit',
+    inactiveButtonClass: 'popup__button_disabled',
+    inputErrorClass: 'popup__item_type_error',
+    errorClass: 'popup__item_type_error_visible'
+}
+
+const validationFormProfile = new FormValidator(formValidationConfig, profilePopup);
+validationFormProfile.enableValidation();
+
+const validationFormCard = new FormValidator(formValidationConfig, cardEditForm);
+validationFormCard.enableValidation();
