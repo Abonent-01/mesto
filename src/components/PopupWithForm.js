@@ -24,11 +24,14 @@ class PopupWithForm extends Popup {
     this._popupForm.addEventListener('submit', this._submitCallbackHandler);
   };
 
-  open(inputValues = {}) {
-    super.open();
+  setInputValues(data) {
     this._inputList.forEach((input) => {
-      input.value = inputValues[input.name] || "";
+      input.value = data[input.name] || "";
     });
+  };
+
+  open() {
+    super.open();
   };
 
   close() {

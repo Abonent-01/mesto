@@ -1,6 +1,6 @@
 export class Card {
   constructor(place, template, handleCardClick) {
-    this._title = place.title;
+    this._name = place.name;
     this._link = place.link;
     this._cardTemplate = template;
     this._image = null;
@@ -16,21 +16,21 @@ export class Card {
   };
 
   _openCard = () => {
-    this._onOpenPopup({ title: this._title, link: this._link });
+    this._onOpenPopup({ name: this._name, link: this._link });
   };
 
   _deleteCard = () => {
     this._card.remove();
+    this. _card = null
   };
 
-  _likeCard = (evt) => {
-    evt.target.classList.toggle('elements__like_active');
+  _likeCard = () => {
+    this._like.classList.toggle('elements__like_active');
   };
 
   _setEventListeners() {
-    this._card
-      .querySelector('.elements__like')
-      .addEventListener('click', this._likeCard);
+    this._like = this._card.querySelector('.elements__like');
+    this._like.addEventListener('click', this._likeCard);
 
     this._card
       .querySelector('.elements__delete')
@@ -41,7 +41,7 @@ export class Card {
 
   generateCard() {
     this._card = this._getTemplate();
-    this._card.querySelector('.elements__title').textContent = this._title;
+    this._card.querySelector('.elements__title').textContent = this._name;
     this._image = this._card.querySelector('.elements__image');
     this._image.src = this._link;
     this._image.alt = this._link;

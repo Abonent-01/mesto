@@ -64,11 +64,11 @@ function addFormSubmit(evt, inputItems) {
   const card = getCardElement(inputItems);
   сardSection.addItem(card);
   popupCardClass.close();
-  popupCardValidation.resetValidationForm();
-}
+};
 
 profileEditButton.addEventListener("click", () => {
   profilePopupClass.open(userInfo.getUserInfo());
+  profilePopupClass.setInputValues(userInfo.getUserInfo());
   profilePopupValidation.resetValidationForm();
 });
 
