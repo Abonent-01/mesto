@@ -62,8 +62,7 @@ export class Card {
 
   _setEventListeners() {
     this._card
-      .querySelector('.elements__like')
-      .addEventListener('click', () => this._handleLike(this));
+    this._like.addEventListener('click', () => this._handleLike(this));
 
     if (this._isUserCard) {
       this._deleteButton.addEventListener('click', this._deleteCard);
@@ -85,8 +84,7 @@ export class Card {
 
     if (this._isLiked) {
       this._card
-        .querySelector('.elements__like')
-        .classList.add('elements__like_active');
+      this._like.classList.add('elements__like_active');
     }
 
     this._image = this._card.querySelector('.elements__image');

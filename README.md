@@ -10,18 +10,7 @@
 * Flexbox
 * Grid
 * Меда-запросы
-*<li>Javascript
-    <ul>
-      <li>Редактирование элементов</li>
-      <li>Добавление/удаление элементов</li>
-      <li>Валидация</li>
-      <li>Promise</li>
-    </ul>
-  </li>
-    <li>Объектно-ориентированное программирование (ООП)</li>
-    <li>Webpack</li>
-    <li>API</li>
-</ul>
+* JavaScript
 
 **Figma**
 

@@ -34,9 +34,9 @@ const userInfo = new UserInfo({
   avatarProfileSelector: '.profile__image',
 });
 
-const profilePopupClass = new PopupWithForm('.popup_type_profile', editFormSubmit);
-const popupCardClass = new PopupWithForm('.popup_type_card', addFormSubmit);
-const popupAvatarClass = new PopupWithForm('.popup_type_avatar', avatarFormSubmit);
+const profilePopupClass = new PopupWithForm('.popup_type_profile', handleProfileFormSubmit);
+const popupCardClass = new PopupWithForm('.popup_type_card', handleCardFormSubmit);
+const popupAvatarClass = new PopupWithForm('.popup_type_avatar', handleAvatarFormSubmit);
 const popupConfirmDeleteClass = new PopupDeleteConfirm('.popup_type_delete', deleteCard);
 const popupImageClass = new PopupWithImage('.popup_type_image');
 
@@ -56,7 +56,7 @@ profilePopupValidation.enableValidation();
 popupAvatarValidation.enableValidation();
 
 const cardSection = new Section(
-  { renderer: (place) => getCardElement(place) },
+  { renderer: getCardElement},
   elementsList
 );
 
@@ -87,7 +87,7 @@ function handleLike(card) {
     .catch((err) => console.log(`Ошибка: ${err}`));
 }
 
-function editFormSubmit(evt, inputItems) {
+function handleProfileFormSubmit(evt, inputItems) {
   evt.preventDefault();
   profilePopupClass.renderLoading(true);
   api
@@ -102,7 +102,7 @@ function editFormSubmit(evt, inputItems) {
     });
 }
 
-function addFormSubmit(evt, inputItems) {
+function handleCardFormSubmit(evt, inputItems) {
   evt.preventDefault();
   popupCardClass.renderLoading(true);
   api
@@ -130,7 +130,7 @@ function deleteCard(evt, { cardId, card }) {
     });
 }
 
-function avatarFormSubmit(evt, { link }) {
+function handleAvatarFormSubmit(evt, { link }) {
   evt.preventDefault();
   popupAvatarClass.renderLoading(true);
   api

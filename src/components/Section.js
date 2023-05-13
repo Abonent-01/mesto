@@ -1,7 +1,7 @@
 class Section {
-  constructor({ renderer }, selectorContainer) {
+  constructor({ renderer }, сontainer) {
     this._renderer = renderer;
-    this._container = selectorContainer;
+    this._container = сontainer;
   }
 
   addItem(item) {
