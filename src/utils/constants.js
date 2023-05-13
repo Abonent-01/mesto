@@ -13,10 +13,17 @@ export const profile = document.querySelector('.profile');
 export const profileEditButton = profile.querySelector('.profile__button-edit');
 export const cardAddButton = profile.querySelector('.profile__button-add');
 export const elementsList = document.querySelector('.elements__list');
+export const profileAvatar = profile.querySelector('.profile__avatar');
+export const popupAvatar = document.querySelector('.popup_type_avatar');
 
 
+/*
+Токен: 502445fb-b5c0-4bb8-954f-20c41125ff94
+Идентификатор группы: cohort-65
+*/
 
-export const initialCards = [
+/*Адрес сервера проекта Mesto: https://mesto.nomoreparties.co
+
     {
       name: 'Архыз',
       link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
@@ -42,3 +49,4 @@ export const initialCards = [
       link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
     }
   ];
+  */

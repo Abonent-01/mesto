@@ -99,11 +99,11 @@
             <form class="popup__form popup__form_type_profile" name="popup-form" novalidate>
                 <h3 class="popup__title">Редактировать профиль</h3>
                 <label class="popup__field">
-                    <input class="popup__item popup__item_type_name" id="input-name" name="inputname" value="" type="text" placeholder="Имя" minlength="2" maxlength="40" required>
+                    <input class="popup__item popup__item_type_name" id="input-name" name="name" value="" type="text" placeholder="Имя" minlength="2" maxlength="40" required>
                     <span class="popup__error" id="input-name-error"></span>
                 </label>
                 <label class="popup__field">
-                    <input class="popup__item popup__item_type_about" id="input-job" name="inputabout" value="" type="text" placeholder="О себе" minlength="2" maxlength="200" required>
+                    <input class="popup__item popup__item_type_about" id="input-job" name="about" value="" type="text" placeholder="О себе" minlength="2" maxlength="200" required>
                     <span class="popup__error" id="input-job-error"></span>
                 </label>
                 <button class="popup__button-submit" name="button-edit" type="submit">Сохранить</button>
@@ -138,6 +138,32 @@
             <h2 class="popup__title-image"></h2>
         </div>
     </div>
+    
+    <!--Popup Delete Confirm-->
+    <div class="popup popup_type_delete">
+        <div class="popup__container">
+            <button class="popup__button-close popup__button-close_type_delete" title="Закрыть" type="button"></button>
+            <form class="popup__form popup__form_type_delete" name="popup-form" novalidate>
+                <h3 class="popup__title">Вы уверены?</h3>
+                <button class="popup__button-submit" name="button-delete" type="submit">Да</button>
+            </form>
+        </div>
+    </div>
+
+    <!--Popup Avatar Upload-->
+    <div class="popup popup_type_avatar">
+        <div class="popup__container">
+            <button class="popup__button-close popup__button-close_type_avatar" title="Закрыть" type="button"></button>
+            <form class="popup__form popup__form_type_avatar" name="popup-form" novalidate>
+                <h3 class="popup__title">Обновить аватар</h3>
+                <label class="popup__field">
+                    <input class="popup__item popup__item_type_link" id="input-link" name="link" value="" type="url" placeholder="Ссылка на картинку" required>
+                    <span class="popup__error" id="input-link-error"></span>
+                </label>
+                <button class="popup__button-submit popup__button-submit_type_avatar" name="button-add" type="submit">Сохранить</button>
+            </form>
+        </div>
+    </div>
 
 <!-- template -->
 <template class="template-card" id="elements-add"> 
@@ -145,7 +171,10 @@
         <img class="elements__image" src="#" alt="Фотография места">
         <div class="elements__card-container">
             <h2 class="elements__title"></h2>
-            <button class="elements__like" type="button"></button>
+            <div>
+                <button class="elements__like" type="button"></button>
+                <p class="elements__like-counter"></p>
+            </div>  
         </div>
         <button class="elements__delete" type="button" title="Удалить карточку"></button>
     </li>

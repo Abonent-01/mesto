@@ -1,5 +1,8 @@
 .profile__avatar {
     margin: 0 30px 0 0;
+    background-image: url('../../../images/profile/avatar_pencil.svg');
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 @media screen and (max-width: 768px) {
@@ -7,3 +10,4 @@
         margin: 0 0 26px;
     }
 }
+
