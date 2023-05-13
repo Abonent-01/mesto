@@ -10,7 +10,7 @@
 * Flexbox
 * Grid
 * Меда-запросы
-<li>Javascript
+*<li>Javascript
     <ul>
       <li>Редактирование элементов</li>
       <li>Добавление/удаление элементов</li>
